@@ -1,265 +1,307 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-	<title>FROALA on Java | Math & Science</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>Froala Editor Examples</title>
 
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="keywords" content="math,science" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Rich HTML editor to create">
-	<meta name="author" content="WIRIS">
+  <style>
+    body {
+      line-height: 1.5;
+      font-family: sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+    section {
+      width: 90%;
+      margin: auto;
+      padding-top: 30px;
+    }
 
-	<!-- Editor Plugin -->
-	<link type="text/css" rel="stylesheet" href="froala/css/froala_editor.pkgd.min.css"/>
-	<script type="text/javascript" src="froala/js/froala_editor.pkgd.min.js"></script>
+    #data-list {
+      -webkit-column-gap: 30px; /* Chrome, Safari, Opera */
+      -moz-column-gap: 30px; /* Firefox */
+      column-gap: 30px;
+      -webkit-column-count: 4; /* Chrome, Safari, Opera */
+      -moz-column-count: 4; /* Firefox */
+      column-count: 4;
+    }
 
-	<!-- Style for html code -->
-	<link type="text/css" rel="stylesheet" href="css/prism.css" />
+    #data-list > div {
+      page-break-inside: avoid;
+    }
 
-	<!-- Style -->
-	<link rel="stylesheet" href="css/style.css">
+    #data-list > div:after {
+      content: "";
+      display: block;
+      height: 20px;
+    }
 
-	<!-- Roboto Font -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    h1 {
+      font-size: 36px;
+      font-weight: 300;
+      text-align: center;
+    }
 
-	<!-- Extra -->
+    h2 {
+      margin: 0;
+      color: #252525;
+      border-left: 3px solid #0098f7;
+      padding-left: 10px;
+      font-weight: 400;
+    }
 
+    ul {
+      padding-left: 5px;
+    }
 
+    ul li {
+      list-style: none;
+      font-size: 16px;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #515151;
+    }
+  </style>
 </head>
 
 <body>
-	<div id="skiptocontent"><a href="#editorContainer">Skip to EDITOR</a></div>
-	<header>
-		<div class="wrs_content">
-			<div class="wrs_container">
-				<div class="wrs_row">
-					<div class="wrs_col wrs_s12 wrs_m7 wrs_l8">
-						<div class="wrs_col wrs_s12">
-							<div class="wrs_col wrs_s3 wrs_m2">
-								<a href="http://www.wiris.com/"><img id="w_logo" src="img/w.svg" alt="WIRIS Maths & Science"></a>
-							</div>
-							<div class="wrs_col wrs_s9 wrs_m10">
-								<h1>FROALA on Java</h1></div>
-							</div>
-						</div>
-						<div class="wrs_col wrs_s12 wrs_m5 wrs_l4">
-							<div class="wrs_row">
-								<div class="wrs_col wrs_s3 wrs_center">
-									<a href="http://www.wiris.com/plugins/demo/froala/java" title="Java"><img id="java_logo" class="wrs_tech_logo" src="img/java_white.svg" alt="Java"></a>
-								</div>
-								<div class="wrs_col wrs_s3 wrs_center">
-									<a href="http://www.wiris.com/plugins/demo/froala/php" title="PHP"><img id="php_logo" class="wrs_tech_logo" src="img/php_white.svg" alt="PHP"></a>
-								</div>
-								<div class="wrs_col wrs_s3 wrs_center">
-									<a href="http://www.wiris.com/plugins/demo/froala/aspx" title=".NET"><img id="aspx_logo" class="wrs_tech_logo" src="img/net_white.svg" alt=".NET"></a>
-								</div>
-								<div class="wrs_col wrs_s3 wrs_center">
-									<a href="http://www.wiris.com/plugins/demo/froala/ruby" title="Ruby on Rails"><img id="ruby_logo" class="wrs_tech_logo" src="img/rails_white.svg" alt="Ruby on Rails"></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
+  <section>
+    <h1>Froala Editor Examples</h1>
 
-		<div class="wrs_content">
-			<div class="wrs_container">
-				<div class="wrs_row">
-					<div class="wrs_col wrs_s12">
-						<p>Press the WIRIS EDITOR icons <i class="wrs_icon_editor"></i> or <i class="wrs_icon_chem"></i> to create and edit equations and formulas</p>
-					</div>
-					<div class="wrs_col wrs_s12">
-						<div id="editorContainer">
-							<div id="toolbarLocation"></div>
-							<div id="example" class="wrs_div_box" contenteditable="true" tabindex="0" spellcheck="false" role="textbox" aria-label="Rich Text Editor, example" title="Rich Text Editor, example">
-								<p>In elementary algebra, the <b>quadratic formula</b> is the solution of the quadratic equation.</p>
-								<p style="text-align: center;"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>=</mo><mfrac><mrow><mo>-</mo><mi>b</mi><mo>&#x000B1;</mo><msqrt><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><mn>4</mn><mi>a</mi><mi>c</mi></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></math></p>
-								<p><b>Water is made from two molecules</b> - Hydrogen and Oxygen. If you put the two gasses together, along with energy, you can make water.</p>
-								<p style="text-align: center;"><math class="wrs_chemistry" xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi mathvariant="normal">H</mi><mn>2</mn></msub><mfenced><mi mathvariant="normal">g</mi></mfenced><mo>+</mo><msub><mi mathvariant="normal">O</mi><mn>2</mn></msub><mfenced><mi mathvariant="normal">g</mi></mfenced><mo>&#x21CC;</mo><mn>2</mn><msub><mi mathvariant="normal">H</mi><mn>2</mn></msub><mi mathvariant="normal">O</mi><mfenced><mi mathvariant="normal">l</mi></mfenced></math></p>
-								<br>
-								<p>The entire formula for the surface area of a cylinder is <math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><msup><mi>&#x3C0;r</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>&#x3C0;rh</mi></math></p>
-							</div>
-						</div>
-					</div>
-				</div>
+    <br/>
 
-				<div class="wrs_row wrs_padding">
-					<div class="wrs_col wrs_s12 wrs_center">
-						<button id="previewButton" class="wrs_btn wrs_btn_large" onclick="updateFunction()"><img id="refresh_icon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDYxMiA3OTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDYxMiA3OTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiPgo8Zz4KCTxwYXRoIHN0eWxlPSJzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNMjA5LjU5MSwzMzcuMTU0ICAgYzEuNDU3LTIuNDQyLDIuMjU1LTQuNjM3LDIuMjU1LTYuNDVjMC0xODEuMTI4LDkyLjUzLTIyMi44ODYsMTE0Ljc1LTIzNi42NTZjMy44Ni0yLjI2LDMuNjI1LTMuMjAxLTAuOC0zLjIwMSAgIGMtMTQzLjE4NCwwLTIzMS42NDIsMTAyLjg2My0yMzEuNjQyLDIzOS44NTdjMCwyLjIzOSwwLjA2MSw0LjM4NSwwLjE3NSw2LjQ1aC04Mi41NkwxNTMsNTE3Ljk3NmwxNDEuMjMxLTE4MC44MjJIMjA5LjU5MXoiIHN0cm9rZT0iI0ZGRkZGRiIgZmlsbD0iI0ZGRkZGRiIvPgoJPHBhdGggc3R5bGU9InN0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik02MDAuMjMxLDQ1NC44NDYgICBMNDU5LDI3NC4wMjRMMzE3Ljc2OSw0NTQuODQ2aDg0LjYyNmMtMS40NDgsMi40MzMtMi4yNDEsNC42MTktMi4yNDEsNi40MjZjMCwxODEuMTUyLTkyLjUzLDIyMi44ODYtMTE0Ljc1LDIzNi42NTYgICBjLTMuODYsMi4yODMtMy42MjUsMy4yMjUsMC44LDMuMjI1YzE0My4xODQsMCwyMzEuNjQyLTEwMi44ODcsMjMxLjY0Mi0yMzkuODhjMC0yLjIzMS0wLjA2MS00LjM2OS0wLjE3NC02LjQyNkg2MDAuMjMxeiIgc3Ryb2tlPSIjRkZGRkZGIiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPC9zdmc+Cg==" alt="Refresh icon" />UPDATE</button>
-					</div>
-				</div>
+    <div id="data-list">
+      <div>
+        <h2>Popular</h2>
+        <ul>
+          <li><a href="/dist/html/popular/full.html" title="Full Featured">Full Featured</a></li>
+          <li><a href="/dist/html/popular/toolbar_inline.html" title="Inline Editor">Inline Editor</a></li>
+          <li><a href="/dist/html/popular/two_instances.html" title="Multiple Editor Instances">Multiple Editor Instances</a></li>
+          <li><a href="/dist/html/popular/textarea.html" title="Textarea Editor">Textarea Editor</a></li>
+          <li><a href="/dist/html/popular/full_page.html" title="Full Page">Full Page</a></li>
+          <li><a href="/dist/html/popular/iframe.html" title="Iframe">Iframe</a></li>
+          <li><a href="/dist/html/popular/disable_edit.html" title="Non-editable Zones">Non-editable Zones</a></li>
+          <li><a href="/dist/html/popular/z_index.html" title="Z-index">Z-index</a></li>
+          <li><a href="/dist/html/popular/init_on_click.html" title="Init on Click">Init on Click</a></li>
+          <li><a href="/dist/html/popular/toolbar_buttons.html" title="Change Toolbar Buttons">Change Toolbar Buttons</a></li>
+          <li><a href="/dist/html/popular/disable_paragraphs.html" title="Disable Paragraphs">Disable Paragraphs</a></li>
+        </ul>
+      </div>
 
-				<div class="wrs_row wrs_padding">
-					<div class="wrs_col wrs_s12">
-						<div id="container_tab">
-							<input id="tab_1" type="radio" name="tab_group" checked="checked" onclick="displayPreview()" />
-							<label for="tab_1">Preview</label>
+      <div>
+        <h2>3rd Party Integration</h2>
+        <ul>
+          <li><a href="/dist/html/3rd-party/aviary/index.html" title="Bootstrap Grid">Aviary Integration</a></li>
+          <li><a href="/dist/html/3rd-party/bootstrap/grid.html" title="Bootstrap Grid">Bootstrap Grid</a></li>
+          <li><a href="/dist/html/3rd-party/bootstrap/lists.html" title="Bootstrap List Group">Bootstrap List Group</a></li>
+          <li><a href="/dist/html/3rd-party/bootstrap/modal.html" title="Bootstrap Modal">Bootstrap Modal</a></li>
+          <li><a href="/dist/html/3rd-party/jquery/mobile.html" title="jQuery Mobile">jQuery Mobile</a></li>
+          <li><a href="/dist/html/3rd-party/jquery/ui_modal.html" title="jQuery UI Modal">jQuery UI Modal</a></li>
+          <li><a href="/dist/html/3rd-party/at.js.html" title="At.JS">At.JS</a></li>
+          <li><a href="/dist/html/3rd-party/code-mirror.html" title="Code Mirror">Code Mirror</a></li>
+          <li><a href="/dist/html/3rd-party/require_js/index.html" title="Require JS">Require JS</a></li>
+          <li><a href="/dist/html/3rd-party/spell-checker/spell-checker.html" title="Spell Checker">Spell Checker</a></li>
+        </ul>
+      </div>
 
-							<input id="tab_2" type="radio" name="tab_group" onclick="displayHTML()" />
-							<label for="tab_2">HTML</label>
+      <div>
+        <h2>API</h2>
+        <ul>
+          <li><a href="/dist/html/api/init_destroy.html" title="Init / Destroy Editor">Init / Destroy Editor</a></li>
+          <li><a href="/dist/html/api/get_html.html" title="Get HTML">Get Edited HTML</a></li>
+          <li><a href="/dist/html/api/insert_html.html" title="Insert HTML">Insert HTML</a></li>
+          <li><a href="/dist/html/api/selection.html" title="Save / Restore Selection">Save / Restore Selection</a></li>
+          <li><a href="/dist/html/api/live_content_preview.html" title="Live Content Preview">Live Content Preview</a></li>
+          <li><a href="/dist/html/api/live_code_preview.html" title="Live Code Preview">Live Code Preview</a></li>
+        </ul>
+      </div>
 
-							<div id="content_tab">
-								<div class="wrs_div_box wrs_preview" id="preview_div"></div>
-								<div class="wrs_div_box wrs_preview wrs_code" id="htmlcode_div" style="display:none;">
-									<p>Press the update button to see the HTML</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+      <div>
+        <h2>International</h2>
+        <ul>
+          <li><a href="/dist/html/international/direction_rtl.html" title="Editor Direction RTL">Editor Direction RTL</a></li>
+          <li><a href="/dist/html/international/language.html" title="Change Language">Change Language</a></li>
+          <li><a href="/dist/html/international/rtl_ltr_buttons.html" title="RTL / LTR Buttons">RTL / LTR Buttons</a></li>
+        </ul>
+      </div>
 
-				<div id="options">
-					<div class="wrs_row wrs_padding">
-						<div class="wrs_col wrs_s12 wrs_m4 wrs_option_label">
-							<p class="wrs_bold wrs_title_options">Language</p>
-							<a target="_blank" href="http://www.wiris.com/editor/languages"><img src="img/info_icon.png" width="16" height="16" title="Language documentation" alt="Language documentation"></a>
-						</div>
-						<div class="wrs_col wrs_s12 wrs_m8">
-							<div class="wrs_row wrs_padding_small">
-								<div class="wrs_col wrs_s12">
-									<select name="lang_select" id="lang_select" onchange="changeLanguage()">
-										<option value="ar">Arabic</option><option value="eu">Basque</option><option value="ca">Catalan</option>
-										<option value="zh-tw">Chinese</option><option value="hr">Croatian</option><option value="cs">Czech</option>
-										<option value="da">Danish</option><option value="nl">Dutch</option><option value="en" selected="true">English</option>
-										<option value="et">Estonian</option><option value="fi">Finnish</option><option value="fr">French</option>
-										<option value="gl">Galician</option><option value="de">German</option><option value="he">Hebrew</option>
-										<option value="hu">Hungarian</option><option value="it">Italian</option><option value="ja">Japanese</option>
-										<option value="ko">Korean</option><option value="no">Norwegian</option><option value="pl">Polish</option>
-										<option value="pt">Portuguese</option><option value="ru">Russian</option><option value="es">Spanish</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
+      <div>
+        <h2>Buttons</h2>
+        <ul>
+          <li><a href="/dist/html/buttons/custom_buttons.html" title="Custom Buttons">Custom Buttons</a></li>
+          <li><a href="/dist/html/buttons/custom_dropdown.html" title="Custom Dropdown">Custom Dropdown</a></li>
+          <li><a href="/dist/html/buttons/external_button.html" title="External Button">External Button</a></li>
+          <li><a href="/dist/html/buttons/subscript_superscript.html" title="Subscript and Superscript">Subscript and Superscript</a></li>
+        </ul>
+      </div>
 
-					<div class="wrs_row wrs_padding">
-						<div class="wrs_col wrs_s12 wrs_m4 wrs_option_label">
-							<p class="wrs_bold wrs_title_options"><label for="advanced_options_checkbox">Show advanced options</label></p>
-						</div>
+      <div>
+        <h2>Events</h2>
+        <ul>
+          <li><a href="/dist/html/events/blur_focus.html" title="Blur / Focus">Blur / Focus</a></li>
+          <li><a href="/dist/html/events/content_changed.html" title="Content Changed">Content Changed</a></li>
+          <li><a href="/dist/html/events/drop.html" title="Drop">Drop</a></li>
+          <li><a href="/dist/html/events/image_removed.html" title="Image Removed">Image Removed</a></li>
+          <li><a href="/dist/html/events/initialized_destroy.html" title="Initialized / Destroy">Initialized / Destroy</a></li>
+        </ul>
+      </div>
 
-						<div class="wrs_col wrs_s12 wrs_m8">
-							<div class="wrs_row wrs_padding_small">
-								<div class="wrs_col wrs_xs1"><input type="checkbox" id="advanced_options_checkbox" onclick="advancedOptions()"/></div>
-								<div class="wrs_col wrs_xs11">&nbsp;</div>
-							</div>
-						</div>
-					</div>
+      <div>
+        <h2>Images</h2>
+        <ul>
+          <li><a href="/dist/html/image/custom_button.html" title="Custom Image Button">Custom Image Button</a></li>
+          <li><a href="/dist/html/image/image_styles.html" title="Image Styles">Image Styles</a></li>
+          <li><a href="/dist/html/image/default_width.html" title="Default Width">Default Width</a></li>
+          <li><a href="/dist/html/image/insert_base64.html" title="Insert as Base64">Insert as Base64</a></li>
+        </ul>
+      </div>
 
-					<div id="advanced_options" style="display:none">
+      <div>
+        <h2>Init inside iframe</h2>
+        <ul>
+          <li><a href="/dist/html/init_inside_iframe/basic.html" title="Basic Editor inside iframe">Basic Editor</a></li>
+          <li><a href="/dist/html/init_inside_iframe/inline.html" title="Inline Editor inside iframe">Inline Editor</a></li>
+        </ul>
+      </div>
 
-						<div class="wrs_row wrs_padding" style="display: none;">
-							<div class="wrs_col wrs_s12 wrs_m4 wrs_option_label">
-								<p class="wrs_bold wrs_title_options">Format</p>
-								<a target="_blank" href="http://www.wiris.com/editor/docs/reference/parameters"><img src="img/info_icon.png" width="16" height="16" title="Format documentation" alt="Format documentation"></a>
-							</div>
+      <div>
+        <h2>Init on click</h2>
+        <ul>
+          <li><a href="/dist/html/init_on_click/basic.html" title="Basic Editor">Basic Editor</a></li>
+          <li><a href="/dist/html/init_on_click/inline.html" title="Inline Editor">Inline Editor</a></li>
+          <li><a href="/dist/html/init_on_click/two_editors.html" title="2 Editors">2 Editors</a></li>
+        </ul>
+      </div>
 
-							<div class="wrs_col wrs_s12 wrs_m8">
-								<div class="wrs_row wrs_padding_small">
-									<div class="wrs_col wrs_xs1">
-										<input type='radio' id="png_format_radio" name='format_radio' value='png_format' checked>
-									</div>
-									<div class="wrs_col wrs_xs11">
-										<label for="png_format_radio">PNG.<span>&nbsp;Fixed pixel images.</span></label>
-									</div>
-								</div>
-								<div class="wrs_row wrs_padding_small">
-									<div class="wrs_col wrs_xs1">
-										<input type='radio' id="svg_format_radio" name='format_radio' value='svg_format'>
-									</div>
-									<div class="wrs_col wrs_xs11">
-										<label for="svg_format_radio">SVG.<span>&nbsp;Scalable images.</span></label>
-									</div>
-								</div>
-							</div>
-						</div>
+      <div>
+        <h2>Initialization</h2>
+        <ul>
+          <li><a href="/dist/html/initialization/init_on_click.html" title="Init on click">Init on Click</a></li>
+          <li><a href="/dist/html/initialization/init_on_button.html" title="Init on Button">Init on Button</a></li>
+          <li><a href="/dist/html/initialization/init_on_link.html" title="Init on Link">Init on Link</a></li>
+          <li><a href="/dist/html/initialization/init_on_image.html" title="Init on Image">Init on Image</a></li>
+          <li><a href="/dist/html/initialization/init_on_h1.html" title="Init on H1">Init on H1</a></li>
+          <li><a href="/dist/html/initialization/initialized_event.html" title="Initialized Event">Initialized Event</a></li>
+          <li><a href="/dist/html/initialization/edit_in_popup.html" title="Edit in Popup">Edit in Popup</a></li>
+        </ul>
+      </div>
 
-						<div class="wrs_row wrs_padding">
-							<div class="wrs_col wrs_s12 wrs_m4 wrs_option_label">
-								<p class="wrs_bold wrs_title_options">Editor parameters</p>
-								<a target="_blank" href="http://www.wiris.com/editor/docs/reference/parameters"><img src="img/info_icon.png" width="16" height="16" title="Parameters list" alt="Parameters list"></a>
-							</div>
+      <div>
+        <h2>Links</h2>
+        <ul>
+          <li><a href="/dist/html/link/link_styles.html" title="Link Styles">Link Styles</a></li>
+          <li><a href="/dist/html/link/predefined_links.html" title="Predefined Links">Predefined Links</a></li>
+          <li><a href="/dist/html/link/custom_validation.html" title="Custom Link Validation">Custom Link Validation</a></li>
+        </ul>
+      </div>
 
-							<div class="wrs_col wrs_s12 wrs_m8">
-								<div class="wrs_row wrs_padding_small wrs_no_line_height">
-									<div class="wrs_col wrs_s12 wrs_m10">
-										<textarea wrap="hard" wrap="off" name="editor_parameters" id="editor_parameters" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" cols="30" rows="5">{toolbar:'quizzes',fontsize:'20px',backgroundColor:'#3B653D',color:'#FEFEFE', hand: 'true'}</textarea>
-										<div id="notification_set_parameters" class="wrs_display_none"></div>
-									</div>
-									<div class="wrs_col wrs_s12 wrs_m2 wrs_center">
-										<button class="wrs_btn" id="set_parameters" onclick="setParameters()">SET</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<hr>
-		<footer>
-			<div class="wrs_container">
-				<div class="wrs_content">
-					<div class="wrs_row">
-						<div class="wrs_col wrs_s12 wrs_m3">
-							<h3>Language</h3>
-							<ul>
-								<li><a href="http://www.wiris.com/plugins/demo/froala/java">Java</a></li>
-								<li><a href="http://www.wiris.com/plugins/demo/froala/php">PHP</a></li>
-								<li><a href="http://www.wiris.com/plugins/demo/froala/aspx">.NET</a></li>
-								<li><a href="http://www.wiris.com/plugins/demo/froala/ruby">Ruby</a></li>
-							</ul>
-						</div>
-						<div class="wrs_col wrs_s12 wrs_m3">
-							<h3>Links</h3>
-							<ul>
-								<li><a href="http://www.wiris.com/plugins/editors/download?filter=froala">Download plugin</a></li>
-								<li><a href="http://www.wiris.com/plugins/docs/demo-download?filter=froala">Download this demo</a></li>
-								<li><a href="http://www.wiris.com/plugins/docs/froala">Documentation</a></li>
-							</ul>
-						</div>
-						<div class="wrs_col wrs_s12 wrs_m3">
-							<h3>Editors</h3>
-							<ul>
-								<li><a href="http://www.wiris.com/solutions/ckeditor">CKeditor</a></li>
-								<li><a href="http://www.wiris.com/solutions/tinymce">TinyMCE</a></li>
-								<li><a href="http://www.wiris.com/solutions">Other solutions</a></li>
-							</ul>
-						</div>
-						<div class="wrs_col wrs_s12 wrs_m3">
-							<h3>Platforms</h3>
-							<ul>
-								<li><a href="http://www.wiris.com/solutions/canvas">Canvas</a></li>
-								<li><a href="http://www.wiris.com/solutions/moodle">Moodle</a></li>
-								<li><a href="http://www.wiris.com/solutions/sakai">Sakai</a></li>
-							</ul>
-						</div>
-					</div>
-					<hr>
-					<div class="wrs_row">
-						<div class="wrs_col wrs_s12 wrs_center">
-							<p><a target="_blank" href="http://www.wiris.com/">wiris.com</a> | <a target="_blank" href="http://www.wiris.com/en/legal-advice#terms">terms of use</a> | <a target="_blank" href="http://www.wiris.com/en/legal-advice#data">privacy</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+      <div>
+        <h2>Plugins</h2>
+        <ul>
+          <li><a href="/dist/html/plugins/line_breaker.html" title="Line Breaker">Line Breaker</a></li>
+          <li><a href="/dist/html/plugins/quick_insert.html" title="Quick Insert">Quick Insert</a></li>
+          <li><a href="/dist/html/plugins/char_counter.html" title="Char Counter">Char Counter</a></li>
+          <li><a href="/dist/html/plugins/full_screen.html" title="Full Screen">Full Screen</a></li>
+        </ul>
+      </div>
 
-		<!-- Prism JS script to beautify the HTML code -->
-		<script type="text/javascript" src="js/prism.js"></script>
+      <div>
+        <h2>Popups</h2>
+        <ul>
+          <li><a href="/dist/html/popups/colors.html" title="Custom Color Picker">Custom Color Picker</a></li>
+          <li><a href="/dist/html/popups/emoticons.html" title="Custom Emoticons">Custom Emoticons</a></li>
+          <li><a href="/dist/html/popups/custom.html" title="Custom Popup">Custom Popup</a></li>
+        </ul>
+      </div>
 
-		<!-- WIRIS script -->
-		<script type="text/javascript" src="js/wirislib.js"></script>
+      <div>
+        <h2>Styling</h2>
+        <ul>
+          <li><a href="/dist/html/styling/font_family.html" title="Font Family">Font Family</a></li>
+          <li><a href="/dist/html/styling/inline.html" title="Inline Styling">Inline Styling</a></li>
+          <li><a href="/dist/html/styling/paragraph.html" title="Paragraph Styling">Paragraph Styling</a></li>
+          <li><a href="/dist/html/styling/placeholder.html" title="Placeholder">Placeholder</a></li>
+          <li><a href="/dist/html/styling/height.html" title="Predefined Height">Predefined Height</a></li>
+          <li><a href="/dist/html/styling/adjustable_height.html" title="Auto-Adjustable Height">Auto-Adjustable Height</a></li>
+          <li><a href="/dist/html/styling/width.html" title="Predefined Width">Predefined Width</a></li>
+        </ul>
+      </div>
 
-		<!-- Google Analytics -->
-		<script src="js/google_analytics.js"></script>
+      <div>
+        <h2>Themes</h2>
+        <ul>
+          <li><a href="/dist/html/themes/dark.html" title="Dark Theme">Dark Theme</a></li>
+          <li><a href="/dist/html/themes/gray.html" title="Gray Theme">Gray Theme</a></li>
+          <li><a href="/dist/html/themes/red.html" title="Red Theme">Red Theme</a></li>
+          <li><a href="/dist/html/themes/royal.html" title="Royal Theme">Royal Theme</a></li>
+        </ul>
+      </div>
 
-	</body>
+      <div>
+        <h2>Table</h2>
+        <ul>
+          <li><a href="/dist/html/table/nested.html" title="Nested Tables">Nested Tables</a></li>
+          <li><a href="/dist/html/table/resize.html" title="Resize Table">Resize Table</a></li>
+          <li><a href="/dist/html/table/insert_helper.html" title="Table Insert Helper">Table Insert Helper</a></li>
+          <li><a href="/dist/html/table/style.html" title="Table Style">Table Style</a></li>
+          <li><a href="/dist/html/table/cell_style.html" title="Table Cell Style">Table Cell Style</a></li>
+        </ul>
+      </div>
 
-	</html>
+      <div>
+        <h2>Toolbar</h2>
+        <ul>
+          <li><a href="/dist/html/toolbar/inline.html" title="Inline Toolbar">Inline Toolbar</a></li>
+          <li><a href="/dist/html/toolbar/sticky.html" title="Sticky Toolbar">Sticky Toolbar</a></li>
+          <li><a href="/dist/html/toolbar/buttons.html" title="Change Toolbar Buttons">Change Toolbar Buttons</a></li>
+          <li><a href="/dist/html/toolbar/external.html" title="External Shared Toolbar">External Shared Toolbar</a></li>
+          <li><a href="/dist/html/toolbar/external_inline.html" title="External Shared Inline Toolbar">External Shared Inline Toolbar</a></li>
+          <li><a href="/dist/html/toolbar/bottom.html" title="Toolbar Bottom">Toolbar Bottom</a></li>
+          <li><a href="/dist/html/toolbar/offset.html" title="Toolbar with Offset">Toolbar with Offset</a></li>
+          <li><a href="/dist/html/toolbar/bottom_offset.html" title="Toolbar Bottom">Toolbar Bottom with Offset</a></li>
+          <li><a href="/dist/html/toolbar/show_selection.html" title="Show Selection Details">Show Selection Details</a></li>
+          <li><a href="/dist/html/toolbar/inline_selection.html" title="Inline Toolbar without Selection">Inline Toolbar without Selection</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Paragraph Modes</h2>
+        <ul>
+          <li><a href="/dist/html/paragraph_modes/enter_br.html" title="Enter BR">Enter BR</a></li>
+          <li><a href="/dist/html/paragraph_modes/enter_div.html" title="Enter DIV">Enter DIV</a></li>
+          <li><a href="/dist/html/paragraph_modes/enter_p.html" title="Enter P">Enter P</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Misc</h2>
+        <ul>
+          <li><a href="/dist/html/misc/scrollable_container.html" title="Scrollable Container">Scrollable Container</a></li>
+          <li><a href="/dist/html/misc/scrollable_container_inline.html" title="Scrollable Container Inline Editor">Scrollable Container Inline</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Typing</h2>
+        <ul>
+          <li><a href="/dist/html/typing/tab.html" title="TAB Key">TAB Key</a></li>
+          <li><a href="/dist/html/typing/shortcuts.html" title="Shortcuts">Shortcuts</a></li>
+          <li><a href="/dist/html/typing/keep_format.html" title="Keep Format on Delete">Keep Format on Delete</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Paste</h2>
+        <ul>
+          <li><a href="/dist/html/paste/plain.html" title="Plain Paste">Plain Paste</a></li>
+          <li><a href="/dist/html/paste/attrs.html" title="Allowed / Denied Attributes">Allowed / Denied Attributes</a></li>
+          <li><a href="/dist/html/paste/tags.html" title="Allowed / Denied Tags">Allowed / Denied Tags</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
