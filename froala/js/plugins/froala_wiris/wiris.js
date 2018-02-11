@@ -1,6 +1,6 @@
 // Define variables needed by core/core.js
 var _wrs_int_conf_file = "integration/configurationjs.php";
-baseURL = window.location.protocol + "//" + window.location.host + "/assets/froala_wiris";
+baseURL = window.location.protocol + "//" + window.location.host + "/js/plugins/froala_wiris";
 // Get _wrs_conf_path (plugin URL).
 var col = document.getElementsByTagName("script");
 // In order to run when wiris.js is inside /assets folder and running as a precompiled asset, we need to search by 'wiris.'
