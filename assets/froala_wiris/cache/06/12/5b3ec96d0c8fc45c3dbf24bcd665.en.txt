@@ -1,0 +1,1 @@
+{"result":{"text":"integral root index sum 5 of fraction numerator square root of 2 over denominator 4 end fraction end root"},"status":"ok"}

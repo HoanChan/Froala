@@ -1,0 +1,1 @@
+{"result":{"text":"y equals fraction numerator 6 x over blank over denominator S i n x squared end fraction"},"status":"ok"}

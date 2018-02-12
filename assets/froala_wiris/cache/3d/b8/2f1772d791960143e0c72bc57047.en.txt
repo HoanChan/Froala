@@ -1,0 +1,1 @@
+{"result":{"text":"straight H subscript 2 straight O\nstack straight t to the power of 0 with rightwards arrow on top"},"status":"ok"}

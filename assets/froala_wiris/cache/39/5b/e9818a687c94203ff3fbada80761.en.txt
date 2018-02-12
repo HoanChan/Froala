@@ -1,0 +1,1 @@
+{"result":{"text":"3 square root of 5 over 4 times y to the power of x minus a end root"},"status":"ok"}

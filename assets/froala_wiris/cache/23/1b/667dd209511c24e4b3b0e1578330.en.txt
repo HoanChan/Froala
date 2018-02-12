@@ -1,0 +1,1 @@
+{"result":{"text":"begin inline style sum from 1212 to 1212 of end style fraction numerator square root of 1212 x end root over denominator square root of 23 y end root end fraction"},"status":"ok"}

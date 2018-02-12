@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Include external CSS. -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+        <!-- Include Editor style. -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+        <style>
+            html, body {
+                height: 100%;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <!-- Create a tag that we will use as the editable area. -->
+        <!-- You can use a div tag as well. -->
+        <textarea></textarea>
+
+        
+    </body>
+    <!-- Include external JS libs. -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!-- Include Editor JS files. -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/js/froala_editor.pkgd.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/js/languages/vi.js"></script>
+        <script type="text/javascript" src="assets/froala_wiris/wiris.js"></script>
+        
+        <!-- Initialize the editor. -->
+        <script>
+            $(function () {
+                 var toolbar = ['undo', 'redo', '|', 'wirisEditor', 'wirisChemistry', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'embedly', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', 'html'];
+                // var toolbar = ['undo', 'redo' , 'bold', '|', 'wirisEditor', 'wirisChemistry', '|', 'insertImage'];
+                $('textarea').froalaEditor({
+                  // Add the custom buttons in the toolbarButtons list, after the separator.
+                  iframe: true,
+                  //       toolbarInline: true,
+                  charCounterCount: false,
+                  imageEditButtons: ['wirisEditor', 'wirisChemistry', 'imageReplace', 'imageAlign', 'imageCaption', 'imageRemove', '|', 'imageLink', 'linkOpen', 'linkEdit', 'linkRemove', '-', 'imageDisplay', 'imageStyle', 'imageAlt', 'imageSize'],
+                  toolbarButtons: toolbar,
+                  toolbarButtonsMD: toolbar,
+                  toolbarButtonsSM: toolbar,
+                  toolbarButtonsXS: toolbar,
+                  htmlAllowedTags:   ['.*'],
+                  htmlAllowedAttrs: ['.*'],
+                  key: 'lrqpD6E-11cyeI-7A11lE-13B-13==',
+                  language: 'vi',
+                });
+                // $('textarea').froalaEditor({
+                //     language: 'vi',
+                //     toolbarButtons: toolBars,
+                //     toolbarButtonsMD: toolBars,
+                //     toolbarButtonsSM: toolBars,
+                //     toolbarButtonsXS: toolBars,
+                //     pluginsEnabled: ['HCMath', "align", "charCounter", "codeBeautifier", "codeView", "colors", "draggable", "embedly", "emoticons", "entities", "file", "fontFamily", "fontSize", "fullscreen", "image", "imageManager", "inlineStyle", "lineBreaker", "link", "lists", "paragraphFormat", "paragraphStyle", "quickInsert", "quote", "save", "table", "url", "video", "wordPaste"],
+                // });
+                //$('textarea').froalaEditor('fullscreen.toggle');
+            });
+        </script>
+        
+        <!-- Function for get html -->
+        <script type="text/javascript">
+            function GetContent() {
+                return $('textarea').froalaEditor('html.get', true);
+            }
+
+            function SetContent(htmlContent) {
+                $('textarea').froalaEditor('html.set', htmlContent);
+            }
+        </script>
+</html>

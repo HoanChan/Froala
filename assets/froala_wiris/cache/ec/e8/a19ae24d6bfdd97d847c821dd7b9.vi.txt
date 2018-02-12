@@ -1,0 +1,1 @@
+{"result":{"text":"square root of fraction numerator a x squared minus b y over denominator b y squared minus a x end fraction end root"},"status":"ok"}
